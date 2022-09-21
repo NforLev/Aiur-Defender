@@ -16,6 +16,8 @@ Player movement is also limited to the X viewpoint and can shoot up to 4 project
 The projectiles the player shoot are created and appended into a list, you can shoot while list =< 4
 when a projectile exit the screen, the projectile list pop one item, so you can shoot again
 
+Each enemy class have a inhereted class method from the main enemy class to check if there's collision with any projectile 
+
 There's a quick tutorial when you open the app with a pygame.wait of 4secs and then the game starts
 When any enemy reach the probe line another pygame.wait starts to show a "thanks for playing" message and then game closes
 
