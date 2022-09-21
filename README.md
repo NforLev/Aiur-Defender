@@ -19,7 +19,10 @@ when a projectile exit the screen, the projectile list pop one item, so you can 
 There's a quick tutorial when you open the app with a pygame.wait of 4secs and then the game starts
 When any enemy reach the probe line another pygame.wait starts to show a "thanks for playing" message and then game closes
 
-Added some background sc1 music and game sound effects on shoot, enemy death and game start
+Added some background sc1 music and game sound effects on shoot, enemy death and game start and sc font
+
+
 
 png images from https://www.pngwing.com/
 sound effects from http://nuclearlaunchdetected.com/
+sc font from https://fontmeme.com/fonts/starcraft-font/
