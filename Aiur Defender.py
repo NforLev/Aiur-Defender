@@ -257,20 +257,20 @@ while start_app:
         pikazergling.y=1000
         marines.y=1000
         zealots.y=1000
-    if fast_zergling.y>510 and fast_zergling<600:
+    if fast_zergling.y>510 and fast_zergling.y<600:
         endgame=True
         pikazergling.y=1000
         marines.y=1000
         zealots.y=1000
         fast_zergling.y=1000
-    if reapers.y>510 and reapers<600:
+    if reapers.y>510 and reapers.y<600:
         endgame=True
         pikazergling.y=1000
         marines.y=1000
         zealots.y=1000
         fast_zergling.y=1000
         reapers.y=1000
-    if fast_zergling2.y>510 and fast_zergling2<600:
+    if fast_zergling2.y>510 and fast_zergling2.y<600:
         endgame=True
         pikazergling.y=1000
         marines.y=1000
@@ -278,7 +278,7 @@ while start_app:
         fast_zergling.y=1000
         reapers.y=1000
         fast_zergling2.y=1000
-    if fast_zergling3.y>510 and fast_zergling3<600:
+    if fast_zergling3.y>510 and fast_zergling3.y<600:
         endgame=True
         pikazergling.y=1000
         marines.y=1000
