@@ -2,6 +2,11 @@ import pygame
 import random
 import math
 from pygame import mixer
+from pathlib import Path
+
+
+rute=Path.cwd()
+
 
 
 """some misc variables"""
@@ -11,11 +16,11 @@ pygame.init()
 wind= pygame.display.set_mode((800, 600))
 #icono, titulo y fondo
 pygame.display.set_caption("Aiur defender")
-icono= pygame.image.load("./img/pylon.png")
+icono= pygame.image.load(rute/"./img/pylon.png")
 pygame.display.set_icon(icono)
-fondo=pygame.image.load("./img/fondo.jpg")
+fondo=pygame.image.load(rute/"./img/fondo.jpg")
 #music
-mixer.music.load("./sounds/main theme.mp3")
+mixer.music.load(rute/"./sounds/main theme.mp3")
 mixer.music.set_volume(0.4)
 mixer.music.play(-1)
 
@@ -23,9 +28,9 @@ mixer.music.play(-1)
 #Classes
 """bellow this lines we can see the diferent class constructors"""
 class Probe():
-    minerals=mixer.Sound("./sounds/Alert_ProtossNeedMoreMinerals.mp3")
+    minerals=mixer.Sound(rute/"./sounds/Alert_ProtossNeedMoreMinerals.mp3")
     minerals.set_volume(0.3)
-    img=pygame.image.load("./img/probe.png")
+    img=pygame.image.load(rute/"./img/probe.png")
     def __init__(self, x, y, x_movement):
         self.x=x
         self.y=y
@@ -41,11 +46,11 @@ class Probe():
         elif self.x>=736:
             self.x=736
 
-player=Probe(368, 520, 0)
+player=Probe(368, 500, 0)
 
 
 class Projectiles():
-    img=pygame.image.load("./img/shoot.png")
+    img=pygame.image.load(rute/"./img/shoot.png")
     def __init__(self, x, y, y_movement):
         self.x=x
         self.y=y
@@ -71,8 +76,8 @@ class Enemy():
 
 
 class Zergling(Enemy):
-    img=pygame.image.load("./img/pikazergling.png")
-    sound=mixer.Sound("./sounds/ZerglingDeath.wav")
+    img=pygame.image.load(rute/"./img/pikazergling.png")
+    sound=mixer.Sound(rute/"./sounds/ZerglingDeath.wav")
     sound.set_volume(0.2)
     def create_zergling(self):
         wind.blit(self.img,(self.x,self.y))
@@ -88,8 +93,8 @@ class Zergling(Enemy):
 
 
 class Zergling2(Enemy):
-    img=pygame.image.load("./img/zergling.png")
-    sound=mixer.Sound("./sounds/ZerglingDeath.wav")
+    img=pygame.image.load(rute/"./img/zergling.png")
+    sound=mixer.Sound(rute/"./sounds/ZerglingDeath.wav")
     sound.set_volume(0.2)
     def create_zergling(self):
         wind.blit(self.img,(self.x,self.y))
@@ -105,10 +110,10 @@ class Zergling2(Enemy):
 
 
 class Marine(Enemy):
-    img=pygame.image.load("./img/marine.png")
-    sound=mixer.Sound("./sounds/MarineDeath.mp3")
+    img=pygame.image.load(rute/"./img/marine.png")
+    sound=mixer.Sound(rute/"./sounds/MarineDeath.mp3")
     sound.set_volume(0.2)
-    soundrdy=mixer.Sound("./sounds/Marine_Ready00.mp3")
+    soundrdy=mixer.Sound(rute/"./sounds/Marine_Ready00.mp3")
     soundrdy.set_volume(0.3)
     def create_marine(self):
         wind.blit(self.img,(self.x,self.y))
@@ -124,8 +129,8 @@ class Marine(Enemy):
 
 
 class Zealot(Enemy):
-    img=pygame.image.load("./img/zealot.png")
-    sound=mixer.Sound("./sounds/ZealotDeath.mp3")
+    img=pygame.image.load(rute/"./img/zealot.png")
+    sound=mixer.Sound(rute/"./sounds/ZealotDeath.mp3")
     sound.set_volume(0.2)
     def create_zealot(self):
         wind.blit(self.img,(self.x,self.y))
@@ -141,8 +146,8 @@ class Zealot(Enemy):
 
 
 class Reaper(Enemy):
-    img=pygame.image.load("./img/reaper.png")
-    sound=mixer.Sound("./sounds/Marine_Death2.mp3")
+    img=pygame.image.load(rute/"./img/reaper.png")
+    sound=mixer.Sound(rute/"./sounds/Marine_Death2.mp3")
     sound.set_volume(0.2)
     def create_reaper(self):
         wind.blit(self.img,(self.x,self.y))
@@ -245,32 +250,32 @@ tutorial()
     endgame true
 """
 while start_app:
-    if pikazergling.y>510 and pikazergling.y<600:
+    if (pikazergling.y>510 and pikazergling.y<600) or (pikazergling.colision(pikazergling.x,pikazergling.y,player.x-20,player.y-20) == True):
         endgame=True
         pikazergling.y=1000
-    if marines.y>510 and marines.y<600:
+    elif (marines.y>510 and marines.y<600) or (marines.colision(marines.x,marines.y,player.x-20,player.y-20) == True):
         endgame=True
         pikazergling.y=1000
         marines.y=1000
-    if zealots.y>510 and zealots.y<600:
+    elif (zealots.y>510 and zealots.y<600) or (zealots.colision(zealots.x,zealots.y,player.x-20,player.y-20) == True):
         endgame=True
         pikazergling.y=1000
         marines.y=1000
         zealots.y=1000
-    if fast_zergling.y>510 and fast_zergling.y<600:
+    elif (fast_zergling.y>510 and fast_zergling.y<600) or (fast_zergling.colision(fast_zergling.x,fast_zergling.y,player.x-20,player.y-20) == True):
         endgame=True
         pikazergling.y=1000
         marines.y=1000
         zealots.y=1000
         fast_zergling.y=1000
-    if reapers.y>510 and reapers.y<600:
+    elif (reapers.y>510 and reapers.y<600) or (reapers.colision(reapers.x,reapers.y,player.x-20,player.y-20) == True):
         endgame=True
         pikazergling.y=1000
         marines.y=1000
         zealots.y=1000
         fast_zergling.y=1000
         reapers.y=1000
-    if fast_zergling2.y>510 and fast_zergling2.y<600:
+    elif (fast_zergling2.y>510 and fast_zergling2.y<600) or (fast_zergling2.colision(fast_zergling2.x,fast_zergling2.y,player.x-20,player.y-20) == True):
         endgame=True
         pikazergling.y=1000
         marines.y=1000
@@ -278,7 +283,7 @@ while start_app:
         fast_zergling.y=1000
         reapers.y=1000
         fast_zergling2.y=1000
-    if fast_zergling3.y>510 and fast_zergling3.y<600:
+    elif (fast_zergling3.y>510 and fast_zergling3.y<600) or (fast_zergling3.colision(fast_zergling3.x,fast_zergling3.y,player.x-20,player.y-20) == True):
         endgame=True
         pikazergling.y=1000
         marines.y=1000
@@ -369,7 +374,7 @@ while start_app:
         if evento.type==pygame.KEYDOWN:
             if evento.key==pygame.K_SPACE:
                 if len(bullets)<4:
-                    shoot_sound=mixer.Sound("./sounds/shoot.wav")
+                    shoot_sound=mixer.Sound(rute/"./sounds/shoot.wav")
                     shoot_sound.set_volume(0.2)
                     shoot_sound.play()
                     bullets.append(Projectiles(player.x, player.y, 0.20))
