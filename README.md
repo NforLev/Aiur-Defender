@@ -4,7 +4,7 @@ Python Starcraft themed space-shooter-game
 Space shooter short 2d game using pygame
 
 Shoot the enemys to get minerals (score), once you reach enough minerals new enemys will spawn
-The game ends when any enemy reach the probe (player) line.
+The game ends when any enemy reach the probe (player) line or hit the probe.
 
 Each enemy has it's own class, with different X and Y speeds and the X movement is limited to the viewed screen,
 when any enemy reach the screen limit it will change direction on the X axis and descend one move into Y axis,
